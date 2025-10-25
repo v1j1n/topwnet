@@ -1,0 +1,20 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/vijin/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Users/vijin/Sites/topwnet/artisan",
+                "boost:mcp"
+            ]
+        },
+        "herd": {
+            "command": "/Users/vijin/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Applications/Herd.app/Contents/Resources/herd-mcp.phar"
+            ],
+            "env": {
+                "SITE_PATH": "/Users/vijin/Sites/topwnet"
+            }
+        }
+    }
+}

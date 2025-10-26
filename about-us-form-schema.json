@@ -1,0 +1,368 @@
+{
+  "form_title": "About Us Management",
+  "form_description": "Structured data input form for About Us section with General Info and Mission & Vision",
+  "sections": [
+    {
+      "section_id": "general_info",
+      "section_title": "General Info",
+      "section_icon": "information-circle",
+      "fields": [
+        {
+          "field_name": "title",
+          "field_label": "Title",
+          "field_type": "text",
+          "required": true,
+          "validation": {
+            "max_length": 255
+          },
+          "helper_text": "Main title for the About Us section."
+        },
+        {
+          "field_name": "description",
+          "field_label": "Description",
+          "field_type": "rich_text",
+          "required": true,
+          "toolbar_buttons": [
+            "bold",
+            "italic",
+            "underline",
+            "link",
+            "bulletList",
+            "orderedList",
+            "h2",
+            "h3"
+          ],
+          "helper_text": "Detailed description for the About Us section."
+        },
+        {
+          "field_name": "chairman_name",
+          "field_label": "Chairman Name",
+          "field_type": "text",
+          "required": false,
+          "validation": {
+            "max_length": 255
+          },
+          "group": "Leadership"
+        },
+        {
+          "field_name": "designation",
+          "field_label": "Designation",
+          "field_type": "text",
+          "required": false,
+          "validation": {
+            "max_length": 255
+          },
+          "group": "Leadership"
+        },
+        {
+          "field_name": "about_section_image",
+          "field_label": "About Section Image",
+          "field_type": "file_upload",
+          "required": false,
+          "validation": {
+            "file_type": "image",
+            "max_size_mb": 1,
+            "max_size_kb": 1024,
+            "recommended_dimensions": {
+              "width": 1000,
+              "height": 666
+            }
+          },
+          "storage": {
+            "disk": "public",
+            "directory": "about/section"
+          },
+          "features": ["image_editor"],
+          "helper_text": "Optional. Recommended size: 1000x666px. Max file size: 1MB.",
+          "group": "Files & Images"
+        },
+        {
+          "field_name": "company_profile_file",
+          "field_label": "Company Profile File",
+          "field_type": "file_upload",
+          "required": true,
+          "validation": {
+            "file_type": "pdf",
+            "accepted_mime_types": ["application/pdf"],
+            "max_size_mb": 1.5,
+            "max_size_kb": 1536
+          },
+          "storage": {
+            "disk": "public",
+            "directory": "about/profiles"
+          },
+          "helper_text": "Upload company profile PDF. Max file size: 1.5MB.",
+          "group": "Files & Images"
+        },
+        {
+          "field_name": "year_of_innovation",
+          "field_label": "Year of Innovation",
+          "field_type": "number",
+          "required": false,
+          "validation": {
+            "min_value": 1900,
+            "max_value": 2100
+          },
+          "helper_text": "The year your company was founded or started innovating.",
+          "group": "Statistics"
+        },
+        {
+          "field_name": "successful_projects",
+          "field_label": "Successful Projects",
+          "field_type": "number",
+          "required": false,
+          "validation": {
+            "min_value": 0
+          },
+          "helper_text": "Total number of successful projects completed.",
+          "group": "Statistics"
+        },
+        {
+          "field_name": "client_retention",
+          "field_label": "Client Retention",
+          "field_type": "number",
+          "required": false,
+          "validation": {
+            "min_value": 0,
+            "max_value": 100
+          },
+          "suffix": "%",
+          "helper_text": "Client retention rate as a percentage.",
+          "group": "Statistics"
+        }
+      ]
+    },
+    {
+      "section_id": "mission_vision",
+      "section_title": "Mission & Vision",
+      "section_icon": "light-bulb",
+      "fields": [
+        {
+          "field_name": "mission",
+          "field_label": "Mission",
+          "field_type": "text",
+          "required": false,
+          "validation": {
+            "max_length": 500
+          },
+          "helper_text": "Short mission statement.",
+          "group": "Mission Statement"
+        },
+        {
+          "field_name": "mission_points",
+          "field_label": "Mission Points",
+          "field_type": "repeater",
+          "required": false,
+          "repeater_schema": {
+            "fields": [
+              {
+                "field_name": "point",
+                "field_label": "Mission Point",
+                "field_type": "text",
+                "required": true,
+                "validation": {
+                  "max_length": 255
+                }
+              }
+            ]
+          },
+          "features": ["collapsible", "sortable"],
+          "default_items": 0,
+          "add_button_label": "Add Mission Point",
+          "helper_text": "Add key points that support your mission statement.",
+          "group": "Mission Statement"
+        },
+        {
+          "field_name": "vision",
+          "field_label": "Vision",
+          "field_type": "text",
+          "required": false,
+          "validation": {
+            "max_length": 500
+          },
+          "helper_text": "Short vision statement.",
+          "group": "Vision Statement"
+        },
+        {
+          "field_name": "vision_points",
+          "field_label": "Vision Points",
+          "field_type": "repeater",
+          "required": false,
+          "repeater_schema": {
+            "fields": [
+              {
+                "field_name": "point",
+                "field_label": "Vision Point",
+                "field_type": "text",
+                "required": true,
+                "validation": {
+                  "max_length": 255
+                }
+              }
+            ]
+          },
+          "features": ["collapsible", "sortable"],
+          "default_items": 0,
+          "add_button_label": "Add Vision Point",
+          "helper_text": "Add key points that support your vision statement.",
+          "group": "Vision Statement"
+        },
+        {
+          "field_name": "our_values",
+          "field_label": "Our Values",
+          "field_type": "text",
+          "required": false,
+          "validation": {
+            "max_length": 500
+          },
+          "helper_text": "Short introduction to your company values.",
+          "group": "Core Values"
+        },
+        {
+          "field_name": "our_values_points",
+          "field_label": "Values Points",
+          "field_type": "repeater",
+          "required": false,
+          "repeater_schema": {
+            "fields": [
+              {
+                "field_name": "point",
+                "field_label": "Value Point",
+                "field_type": "text",
+                "required": true,
+                "validation": {
+                  "max_length": 255
+                }
+              }
+            ]
+          },
+          "features": ["collapsible", "sortable"],
+          "default_items": 0,
+          "add_button_label": "Add Value Point",
+          "helper_text": "Add key values that guide your company.",
+          "group": "Core Values"
+        },
+        {
+          "field_name": "client_satisfaction",
+          "field_label": "Client Satisfaction",
+          "field_type": "number",
+          "required": false,
+          "validation": {
+            "min_value": 0,
+            "max_value": 100
+          },
+          "suffix": "%",
+          "helper_text": "Client satisfaction rate as a percentage.",
+          "group": "Additional Metrics"
+        },
+        {
+          "field_name": "projects_delivered",
+          "field_label": "Projects Delivered",
+          "field_type": "number",
+          "required": false,
+          "validation": {
+            "min_value": 0
+          },
+          "helper_text": "Total number of projects delivered.",
+          "group": "Additional Metrics"
+        },
+        {
+          "field_name": "vision_mission_image",
+          "field_label": "Vision & Mission Image",
+          "field_type": "file_upload",
+          "required": false,
+          "validation": {
+            "file_type": "image",
+            "max_size_mb": 1,
+            "max_size_kb": 1024,
+            "recommended_dimensions": {
+              "width": 556,
+              "height": 658
+            }
+          },
+          "storage": {
+            "disk": "public",
+            "directory": "about/vision"
+          },
+          "features": ["image_editor"],
+          "helper_text": "Optional. Recommended size: 556x658px. Max file size: 1MB.",
+          "group": "Vision & Mission Image"
+        }
+      ]
+    }
+  ],
+  "validation_summary": {
+    "required_fields": [
+      "title",
+      "description",
+      "company_profile_file"
+    ],
+    "optional_fields": [
+      "chairman_name",
+      "designation",
+      "about_section_image",
+      "year_of_innovation",
+      "successful_projects",
+      "client_retention",
+      "mission",
+      "mission_points",
+      "vision",
+      "vision_points",
+      "our_values",
+      "our_values_points",
+      "client_satisfaction",
+      "projects_delivered",
+      "vision_mission_image"
+    ],
+    "file_uploads": [
+      {
+        "field": "about_section_image",
+        "required": false,
+        "type": "image",
+        "max_size": "1MB",
+        "dimensions": "1000x666px"
+      },
+      {
+        "field": "company_profile_file",
+        "required": true,
+        "type": "pdf",
+        "max_size": "1.5MB"
+      },
+      {
+        "field": "vision_mission_image",
+        "required": false,
+        "type": "image",
+        "max_size": "1MB",
+        "dimensions": "556x658px"
+      }
+    ],
+    "repeater_fields": [
+      {
+        "field": "mission_points",
+        "item_type": "short_text",
+        "max_item_length": 255
+      },
+      {
+        "field": "vision_points",
+        "item_type": "short_text",
+        "max_item_length": 255
+      },
+      {
+        "field": "our_values_points",
+        "item_type": "short_text",
+        "max_item_length": 255
+      }
+    ]
+  },
+  "metadata": {
+    "created_at": "2025-10-26",
+    "framework": "Laravel 12 with Filament 4",
+    "database_table": "about_us",
+    "model_class": "App\\Models\\AboutUs",
+    "resource_class": "App\\Filament\\Resources\\AboutUs\\AboutUsResource",
+    "tests_passing": true,
+    "test_count": 19,
+    "assertion_count": 53
+  }
+}
+

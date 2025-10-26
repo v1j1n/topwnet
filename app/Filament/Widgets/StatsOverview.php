@@ -26,12 +26,12 @@ class StatsOverview extends StatsOverviewWidget
                 ->color('info')
                 ->chart($this->getContactEnquiryChartData()),
 
-            Stat::make('Active Services', Service::where('status', true)->count())
+            Stat::make('Active Services', Service::where('status', 'Active')->count())
                 ->description('Published services')
                 ->descriptionIcon('heroicon-o-check-circle')
                 ->color('warning'),
 
-            Stat::make('Active Partners', Partner::where('status', true)->count())
+            Stat::make('Active Partners', Partner::where('status', 'Active')->count())
                 ->description('Published partners')
                 ->descriptionIcon('heroicon-o-user-group')
                 ->color('primary'),

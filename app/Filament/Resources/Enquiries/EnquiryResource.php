@@ -17,13 +17,15 @@ class EnquiryResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedEnvelope;
 
-    protected static ?string $navigationLabel = 'Enquiries';
+    protected static string|\UnitEnum|null $navigationGroup = 'Enquiries';
 
-    protected static ?string $modelLabel = 'Enquiry';
+    protected static ?string $navigationLabel = 'General Enquiries';
 
-    protected static ?string $pluralModelLabel = 'Enquiries';
+    protected static ?string $modelLabel = 'General Enquiry';
 
-    protected static ?int $navigationSort = 6;
+    protected static ?string $pluralModelLabel = 'General Enquiries';
+
+    protected static ?int $navigationSort = 1;
 
     public static function table(Table $table): Table
     {

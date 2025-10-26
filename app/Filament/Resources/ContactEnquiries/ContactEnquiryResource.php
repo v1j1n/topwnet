@@ -19,11 +19,15 @@ class ContactEnquiryResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedEnvelope;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Enquiries';
+
     protected static ?string $navigationLabel = 'Contact Enquiries';
 
     protected static ?string $modelLabel = 'Contact Enquiry';
 
     protected static ?string $pluralModelLabel = 'Contact Enquiries';
+
+    protected static ?int $navigationSort = 2;
 
     public static function infolist(Schema $schema): Schema
     {

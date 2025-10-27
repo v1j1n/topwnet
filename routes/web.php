@@ -1,11 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/about-us', function () {
     return view('pages.about-us');

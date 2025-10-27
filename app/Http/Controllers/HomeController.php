@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutUsHomeSetting;
 use App\Models\Banner;
+use App\Models\Partner;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -26,6 +28,15 @@ class HomeController extends Controller
             ->where('status', 'active')
             ->first();
 
-        return view('pages.home', compact('banners', 'aboutUs'));
+        // Fetch active partners sorted by sort_order (cached for performance)
+        $partners = Cache::remember('home.partners', 3600, function () {
+            return Partner::query()
+                ->select(['id', 'name', 'logo'])
+                ->where('status', 'active')
+                ->orderBy('sort_order')
+                ->get();
+        });
+
+        return view('pages.home', compact('banners', 'aboutUs', 'partners'));
     }
 }

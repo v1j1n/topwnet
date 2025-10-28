@@ -9,6 +9,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class ServiceForm
 {
@@ -25,7 +26,19 @@ class ServiceForm
                                     ->label('Title')
                                     ->required()
                                     ->maxLength(255)
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function ($set, ?string $state) {
+                                        $set('slug', Str::slug($state));
+                                    })
                                     ->helperText('Main title shown in the carousel slide. Required for generating slug.')
+                                    ->columnSpanFull(),
+
+                                TextInput::make('slug')
+                                    ->label('Slug')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->unique(ignoreRecord: true)
+                                    ->helperText('Auto-generated from title. Can be edited if needed.')
                                     ->columnSpanFull(),
 
                                 TextInput::make('title_hover')

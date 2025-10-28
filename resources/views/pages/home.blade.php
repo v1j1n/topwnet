@@ -156,5 +156,146 @@
 @endif
 <!-- Partners area end here -->
 
+
+<!-- Services area start here-->
+<section class="service-section-four pt-120 pb-120">
+    <div class="sec-shape">
+        <img src="images/shape/service-four-shape.png" alt="Shape">
+    </div>
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 content-column">
+                <div class="inner-column">
+                    <div class="sec-title mb-30">
+                        <h6 class="sub-title wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">Services</h6>
+                        <h2 class="title wow splt-txt words chars splitting animated" data-splitting="">
+                            <span class="word">IT Solutions</span>
+                            <span class="word">Drive</span>
+                            <span class="word">Business</span>
+                            <span class="word">Growth</span>
+                        </h2>
+                        <p class="text wow fadeInUp animated" data-wow-delay="200ms" data-wow-duration="1500ms">
+                            Top World Networks is a leading IT solutions provider based in Kuwait, delivering innovative and scalable services to businesses locally and globally.
+                        </p>
+                    </div>
+                    <div class="info">
+                        <ul class="wow fadeInDown animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <h5 class="title">Web Development & Hosting</h5>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <h5 class="title">Cloud & Infrastructure Solutions</h5>
+                            </li>
+                        </ul>
+                        <ul class="wow fadeInDown animated" data-wow-delay="100ms" data-wow-duration="1500ms">
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <h5 class="title">Enterprise Software Development</h5>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <h5 class="title">Digital Transformation Consulting</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="btn-one-rounded wow fadeInDown mt-40 animated" data-wow-delay="200ms" data-wow-duration="1500ms" href="it-consulting.html">View all Services <i class="fa-regular fa-angle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 wow fadeInLeft animated" data-wow-delay="200ms" data-wow-duration="1500ms">
+                <div class="service-block-four">
+                    <div class="acc" id="customAccordion">
+                        <!-- First item -->
+                        <div class="acc-item">
+                            <h2 class="acc-header">
+                                <button class="acc-btn" type="button">
+                  <span class="content-box">
+                    <span class="icon">
+                      <!-- SVG icon -->
+                    </span>
+                    <span class="title">Custom Web Solutions</span>
+                  </span>
+                                    <span class="number">01</span>
+                                </button>
+                            </h2>
+                            <div class="acc-collapse" style="display: none;">
+                                <div class="acc-body">
+                                    <p class="text">Building responsive websites, e-commerce platforms, and enterprise web applications tailored to client needs.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Second item -->
+                        <div class="acc-item">
+                            <h2 class="acc-header">
+                                <button class="acc-btn" type="button">
+                  <span class="content-box">
+                    <span class="icon">
+                      <!-- SVG icon -->
+                    </span>
+                    <span class="title">IT Infrastructure Management</span>
+                  </span>
+                                    <span class="number">02</span>
+                                </button>
+                            </h2>
+                            <div class="acc-collapse" style="display: none;">
+                                <div class="acc-body">
+                                    <p class="text">Providing cloud hosting, server management, and networking solutions to optimize IT performance and reliability.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Third item -->
+                        <div class="acc-item">
+                            <h2 class="acc-header">
+                                <button class="acc-btn" type="button">
+                  <span class="content-box">
+                    <span class="icon">
+                      <!-- SVG icon -->
+                    </span>
+                    <span class="title">Digital Transformation</span>
+                  </span>
+                                    <span class="number">03</span>
+                                </button>
+                            </h2>
+                            <div class="acc-collapse" style="display: none;">
+                                <div class="acc-body">
+                                    <p class="text">Helping businesses adopt new technologies, streamline operations, and enhance digital engagement with customers.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fourth item -->
+                        <div class="acc-item">
+                            <h2 class="acc-header">
+                                <button class="acc-btn" type="button">
+                  <span class="content-box">
+                    <span class="icon">
+                      <!-- SVG icon -->
+                    </span>
+                    <span class="title">Consulting & Support</span>
+                  </span>
+                                    <span class="number">04</span>
+                                </button>
+                            </h2>
+                            <div class="acc-collapse" style="display: none;">
+                                <div class="acc-body">
+                                    <p class="text">Providing IT consulting, ongoing support, and strategic guidance to ensure business growth and technology efficiency.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services area end here-->
+
+
 @endsection
 

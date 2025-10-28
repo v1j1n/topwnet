@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Service extends Model
 {
@@ -16,6 +17,7 @@ class Service extends Model
         'primary_label',
         'secondary_label',
         'title',
+        'slug',
         'title_hover',
         'big_image',
         'description',
@@ -36,5 +38,22 @@ class Service extends Model
             'process' => 'array',
             'outcomes' => 'array',
         ];
+    }
+
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function (Service $service) {
+            if (empty($service->slug)) {
+                $service->slug = Str::slug($service->title);
+            }
+        });
+
+        static::updating(function (Service $service) {
+            if ($service->isDirty('title') && empty($service->slug)) {
+                $service->slug = Str::slug($service->title);
+            }
+        });
     }
 }

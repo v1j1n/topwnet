@@ -107,10 +107,10 @@ class ServiceHomeSettings extends Page implements HasForms
                             ->placeholder('Service name'),
 
                         TextInput::make('number_tag')
-                            ->label('Number Tag')
+                            ->label('Small Descriptive Tag')
                             ->required()
-                            ->maxLength(10)
-                            ->helperText('Numerical tag or label (e.g. 01, 02, etc).')
+                            ->maxLength(255)
+                            ->helperText('Small descriptive tag or number for the offering.')
                             ->placeholder('01'),
                     ])
                     ->addActionLabel('Add Offering')

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Honeypot\ProtectAgainstSpam;
 
 // Frontend Routes
 Route::get('/', HomeController::class)->name('home');
@@ -57,6 +59,11 @@ Route::post('/contact', function () {
     // Handle contact form submission here
     return redirect()->route('contact')->with('success', 'Message sent successfully!');
 })->name('contact.submit');
+
+// Enquiry form submission (homepage) with honeypot protection
+Route::post('/enquiry', [EnquiryController::class, 'store'])
+    ->middleware(ProtectAgainstSpam::class)
+    ->name('enquiry.store');
 
 Route::get('/quote', function () {
     return view('pages.quote');

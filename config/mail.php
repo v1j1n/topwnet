@@ -115,4 +115,32 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Email Address
+    |--------------------------------------------------------------------------
+    |
+    | This is the email address where enquiry notifications will be sent.
+    | You can set this in your .env file using ADMIN_EMAIL.
+    |
+    */
+
+    'admin_email' => env('ADMIN_EMAIL', 'admin@example.com'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Use PHP Mail Function
+    |--------------------------------------------------------------------------
+    |
+    | Set this to true if you want to use PHP's native mail() function
+    | instead of SMTP. This is useful for shared hosting environments
+    | like Hostinger or GoDaddy where SMTP might not be available.
+    |
+    | When set to true, emails will be sent using PHP's mail() function.
+    | When set to false (default), Laravel's notification system will be used.
+    |
+    */
+
+    'use_php_mail' => env('USE_PHP_MAIL', false),
+
 ];

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
@@ -35,6 +36,9 @@ Route::prefix('services')->name('services.')->group(function () {
     Route::get('/webdev', function () {
         return view('pages.services.webdev');
     })->name('webdev');
+
+    // Dynamic route for any service from database (place last to avoid conflicts)
+    Route::get('/{slug}', ServiceController::class)->name('show')->where('slug', '[a-z0-9\-]+');
 });
 
 Route::get('/partners', function () {

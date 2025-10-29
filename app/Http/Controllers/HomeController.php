@@ -6,6 +6,7 @@ use App\Models\AboutUsHomeSetting;
 use App\Models\Banner;
 use App\Models\Partner;
 use App\Models\Service;
+use App\Models\ServiceHomeSetting;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
 
@@ -45,6 +46,11 @@ class HomeController extends Controller
             ->orderBy('sort_order')
             ->get();
 
-        return view('pages.home', compact('banners', 'aboutUs', 'partners', 'services'));
+        // Fetch service home setting (for the service section with offerings)
+        $serviceHomeSetting = ServiceHomeSetting::query()
+            ->select(['id', 'title', 'heading', 'description', 'highlights', 'offerings'])
+            ->first();
+
+        return view('pages.home', compact('banners', 'aboutUs', 'partners', 'services', 'serviceHomeSetting'));
     }
 }

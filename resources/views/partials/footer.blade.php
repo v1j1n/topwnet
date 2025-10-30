@@ -39,12 +39,11 @@
                                 <h4 class="widget-title">Our Services</h4>
                                 <div class="widget-content">
                                     <ul class="user-links">
-                                        <li><a href="{{ route('services.it-consulting') }}">IT Consulting</a></li>
-                                        <li><a href="{{ route('services.network-security') }}">IT Security</a></li>
-                                        <li><a href="{{ route('services.it-outsourcing') }}">IT Outsourcing</a></li>
-                                        <li><a href="{{ route('services.hardware') }}">Hardware & Software Solutions</a></li>
-                                        <li><a href="{{ route('services.amc') }}">AMC (Annual Maintenance Contract)</a></li>
-                                        <li><a href="{{ route('services.webdev') }}">Web & Hosting Services</a></li>
+                                        @forelse($footerServices as $service)
+                                        <li><a href="{{ route('services.show', $service->slug) }}">{{ $service->title }}</a></li>
+                                        @empty
+                                        <li><a href="#">No services available</a></li>
+                                        @endforelse
                                     </ul>
                                 </div>
                             </div>
@@ -70,20 +69,29 @@
                                 <h4 class="widget-title">Contact</h4>
                                 <div class="widget-content">
                                     <ul class="user-links">
+                                        @if($siteSettings->address)
                                         <li>
                                             <i class="fa-light fa-location-dot"></i>
-                                            <a href="#0">Kuwait City, Al Qibla, Block 13, Al Soor Street, Al Marzook Building. Third Floor, Office No. 15</a>
+                                            <a href="#0">{{ $siteSettings->address }}</a>
                                         </li>
+                                        @endif
+                                        @if($siteSettings->emails && count($siteSettings->emails) > 0)
                                         <li>
                                             <i class="fa-light fa-envelope"></i>
-                                            <a href="mailto:sales@topwnet.com">sales@topwnet.com</a><br />
-                                            <a href="mailto:support@topwnet.com">support@topwnet.com</a>
+                                            @foreach($siteSettings->emails as $email)
+                                            <a href="mailto:{{ $email }}">{{ $email }}</a>@if(!$loop->last)<br />@endif
+                                            @endforeach
                                         </li>
+                                        @endif
+                                        @if($siteSettings->mobile_numbers && count($siteSettings->mobile_numbers) > 0)
                                         <li>
                                             <i class="fa-light fa-phone-flip"></i>
-                                            <a href="tel:+96522445419">+965 22445419 / 22445391</a><br />
-                                            <a href="tel:+96594411744">+965 94411744 / 50410555</a>
+                                            <a href="tel:{{ str_replace(' ', '', $siteSettings->mobile_numbers[0]) }}">
+                                                @foreach($siteSettings->mobile_numbers as $index => $mobile){{ $mobile }}@if($index < count($siteSettings->mobile_numbers) - 1), @endif
+@endforeach
+                                            </a>
                                         </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

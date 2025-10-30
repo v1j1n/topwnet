@@ -6,17 +6,39 @@
             <div class="top-left">
                 <!-- Info List -->
                 <ul class="info-list">
-                    <li><i class="fa-solid fa-envelope"></i> <a href="mailto:sales@topwnet.com">sales@topwnet.com, support@topwnet.com</a></li>
-                    <li><i class="fa-solid fa-phone ring__animation"></i> +965 22445419 / 22445391, 94411744 / 50410555</li>
+                    @if($siteSettings->emails && count($siteSettings->emails) > 0)
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        @foreach($siteSettings->emails as $index => $email)
+                            <a href="mailto:{{ $email }}">{{ $email }}</a>@if($index < count($siteSettings->emails) - 1), @endif
+                        @endforeach
+                    </li>
+                    @endif
+                    @if($siteSettings->mobile_numbers && count($siteSettings->mobile_numbers) > 0)
+                    <li>
+                        <i class="fa-solid fa-phone ring__animation"></i>
+                        @foreach($siteSettings->mobile_numbers as $index => $mobile)
+                            {{ $mobile }}@if($index < count($siteSettings->mobile_numbers) - 1), @endif
+                        @endforeach
+                    </li>
+                    @endif
                 </ul>
             </div>
 
             <div class="top-right">
                 <ul class="top-social-icon">
-                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    @if($siteSettings->facebook_url)
+                    <li><a href="{{ $siteSettings->facebook_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    @endif
+                    @if($siteSettings->instagram_url)
+                    <li><a href="{{ $siteSettings->instagram_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a></li>
+                    @endif
+                    @if($siteSettings->x_url)
+                    <li><a href="{{ $siteSettings->x_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    @endif
+                    @if($siteSettings->linkedin_url)
+                    <li><a href="{{ $siteSettings->linkedin_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -46,12 +68,11 @@
                     <li class="dropdown {{ Request::is('services/*') ? 'current' : '' }}">
                         <a href="#">Services</a>
                         <ul>
-                            <li><a href="{{ route('services.it-consulting') }}">IT Consulting</a></li>
-                            <li><a href="{{ route('services.network-security') }}">IT Security</a></li>
-                            <li><a href="{{ route('services.it-outsourcing') }}">IT Outsourcing</a></li>
-                            <li><a href="{{ route('services.hardware') }}">Hardware & Software Solutions</a></li>
-                            <li><a href="{{ route('services.amc') }}">AMC (Annual Maintenance Contract)</a></li>
-                            <li><a href="{{ route('services.webdev') }}">Web & Hosting Services</a></li>
+                            @forelse($allServices as $service)
+                            <li><a href="{{ route('services.show', $service->slug) }}">{{ $service->title }}</a></li>
+                            @empty
+                            <li><a href="#">No services available</a></li>
+                            @endforelse
                         </ul>
                     </li>
                     <li class="{{ Request::is('partners') ? 'current' : '' }}">
@@ -103,36 +124,52 @@
                 </div>
 
                 <ul class="contact-list-one">
+                    @if($siteSettings->mobile_numbers && count($siteSettings->mobile_numbers) > 0)
                     <li>
                         <div class="contact-info-box">
                             <i class="icon lnr-icon-phone-handset"></i>
                             <span class="title">Call Now</span>
-                            <a href="tel:+96522445419">+965 22445419 / 22445391</a>
-                            <a href="tel:+96594411744">+965 94411744 / 50410555</a>
+                            @foreach($siteSettings->mobile_numbers as $mobile)
+                            <a href="tel:{{ str_replace(' ', '', $mobile) }}">{{ $mobile }}</a>
+                            @endforeach
                         </div>
                     </li>
+                    @endif
+                    @if($siteSettings->emails && count($siteSettings->emails) > 0)
                     <li>
                         <div class="contact-info-box">
                             <span class="icon lnr-icon-envelope1"></span>
                             <span class="title">Send Email</span>
-                            <a href="mailto:sales@topwnet.com">sales@topwnet.com</a>
-                            <a href="mailto:support@topwnet.com">support@topwnet.com</a>
+                            @foreach($siteSettings->emails as $email)
+                            <a href="mailto:{{ $email }}">{{ $email }}</a>
+                            @endforeach
                         </div>
                     </li>
+                    @endif
+                    @if($siteSettings->address)
                     <li>
                         <div class="contact-info-box">
                             <span class="icon lnr-icon-location"></span>
                             <span class="title">Contact us</span>
-                            <a href="#">Kuwait City, Al Qibla, Block 13, Al Soor Street, Al Marzook Building. Third Floor, Office No. 15</a>
+                            <a href="#">{{ $siteSettings->address }}</a>
                         </div>
                     </li>
+                    @endif
                 </ul>
 
                 <ul class="social-links">
-                    <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    @if($siteSettings->x_url)
+                    <li><a href="{{ $siteSettings->x_url }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a></li>
+                    @endif
+                    @if($siteSettings->facebook_url)
+                    <li><a href="{{ $siteSettings->facebook_url }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+                    @endif
+                    @if($siteSettings->linkedin_url)
+                    <li><a href="{{ $siteSettings->linkedin_url }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
+                    @endif
+                    @if($siteSettings->instagram_url)
+                    <li><a href="{{ $siteSettings->instagram_url }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
+                    @endif
                 </ul>
             </nav>
         </div>

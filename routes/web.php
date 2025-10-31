@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
@@ -42,9 +43,7 @@ Route::prefix('services')->name('services.')->group(function () {
     Route::get('/{slug}', ServiceController::class)->name('show')->where('slug', '[a-z0-9\-]+');
 });
 
-Route::get('/partners', function () {
-    return view('pages.partners');
-})->name('partners');
+Route::get('/partners', PartnerController::class)->name('partners');
 
 Route::get('/clients', function () {
     return view('pages.clients');

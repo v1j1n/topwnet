@@ -33,7 +33,7 @@ class EnquiryController extends Controller
         }
 
         // Return JSON response for AJAX requests
-        if ($request->expectsJson() || $request->ajax()) {
+        if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
                 'message' => 'Thank you for your enquiry! We will get back to you soon.',

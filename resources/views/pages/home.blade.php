@@ -13,5 +13,11 @@
 
 @push('scripts')
     <script src="{{ asset('js/contact-form-ajax.js') }}"></script>
+    <script>
+        // Initialize the form handler for home contact form
+        document.addEventListener('DOMContentLoaded', () => {
+            new ContactFormHandler('contact_form');
+        });
+    </script>
 @endpush
 

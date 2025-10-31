@@ -23,16 +23,16 @@
                                     <span class="sub-title">{{ $service->primary_label }}</span>
                                     <span class="sub-title-2">{{ $service->secondary_label }}</span>
                                     <h4 class="title">
-                                        <a href="{{ url('services/' . $service->slug) }}">{{ $service->title }}</a>
+                                        <a href="{{ route('services.show', $service->slug) }}">{{ $service->title }}</a>
                                     </h4>
                                 </div>
-                                <a class="arry-btn" href="{{ url('services/' . $service->slug) }}">
+                                <a class="arry-btn" href="{{ route('services.show', $service->slug) }}">
                                     <i class="fa-regular fa-arrow-up-right"></i>
                                 </a>
                                 <div class="hover-content">
                                     <span class="sub-title">{{ $service->primary_label }}</span>
                                     <h4 class="title">
-                                        <a href="{{ url('services/' . $service->slug) }}">{{ $service->title_hover ?? $service->title }}</a>
+                                        <a href="{{ route('services.show', $service->slug) }}">{{ $service->title_hover ?? $service->title }}</a>
                                     </h4>
                                 </div>
                             </div>

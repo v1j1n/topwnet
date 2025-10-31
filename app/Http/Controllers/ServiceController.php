@@ -18,7 +18,14 @@ class ServiceController extends Controller
             ->where('status', 'active')
             ->firstOrFail();
 
-        return view('pages.services.show', compact('service'));
+        // Fetch all other active services for the sidebar, ordered by sort_order
+        $otherServices = Service::query()
+            ->where('status', 'active')
+            ->orderBy('sort_order')
+            ->orderBy('title')
+            ->get();
+
+        return view('pages.services.show', compact('service', 'otherServices'));
     }
 }
 

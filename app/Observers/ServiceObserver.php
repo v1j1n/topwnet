@@ -12,7 +12,7 @@ class ServiceObserver
      */
     public function created(Service $service): void
     {
-        Cache::forget('active_services');
+        $this->clearServiceCache();
     }
 
     /**
@@ -20,7 +20,7 @@ class ServiceObserver
      */
     public function updated(Service $service): void
     {
-        Cache::forget('active_services');
+        $this->clearServiceCache();
     }
 
     /**
@@ -28,6 +28,15 @@ class ServiceObserver
      */
     public function deleted(Service $service): void
     {
+        $this->clearServiceCache();
+    }
+
+    /**
+     * Clear all service related cache.
+     */
+    private function clearServiceCache(): void
+    {
         Cache::forget('active_services');
+        Cache::forget('home.services');
     }
 }

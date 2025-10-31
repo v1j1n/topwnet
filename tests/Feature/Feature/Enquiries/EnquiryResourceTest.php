@@ -87,11 +87,11 @@ test('enquiries are ordered by created_at desc by default', function () {
 });
 
 test('enquiry resource has correct navigation label', function () {
-    expect(EnquiryResource::getNavigationLabel())->toBe('Enquiries');
+    expect(EnquiryResource::getNavigationLabel())->toBe('General Enquiries');
 });
 
 test('enquiry resource has correct model label', function () {
-    expect(EnquiryResource::getModelLabel())->toBe('Enquiry');
+    expect(EnquiryResource::getModelLabel())->toBe('General Enquiry');
 });
 
 test('enquiry resource cannot create records', function () {

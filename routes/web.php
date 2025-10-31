@@ -15,35 +15,8 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::get('/about-us', AboutUsController::class)->name('about-us');
 
-// Services Routes
-Route::prefix('services')->name('services.')->group(function () {
-    Route::get('/it-consulting', function () {
-        return view('pages.services.it-consulting');
-    })->name('it-consulting');
-
-    Route::get('/network-security', function () {
-        return view('pages.services.network-security');
-    })->name('network-security');
-
-    Route::get('/it-outsourcing', function () {
-        return view('pages.services.it-outsourcing');
-    })->name('it-outsourcing');
-
-    Route::get('/hardware', function () {
-        return view('pages.services.hardware');
-    })->name('hardware');
-
-    Route::get('/amc', function () {
-        return view('pages.services.amc');
-    })->name('amc');
-
-    Route::get('/webdev', function () {
-        return view('pages.services.webdev');
-    })->name('webdev');
-
-    // Dynamic route for any service from database (place last to avoid conflicts)
-    Route::get('/{slug}', ServiceController::class)->name('show')->where('slug', '[a-z0-9\-]+');
-});
+// Services Routes - Dynamic service pages from database
+Route::get('/services/{slug}', ServiceController::class)->name('services.show')->where('slug', '[a-z0-9\-]+');
 
 Route::get('/partners', PartnerController::class)->name('partners');
 
@@ -64,6 +37,3 @@ Route::get('/quote', function () {
     return view('pages.quote');
 })->name('quote');
 
-Route::get('/search', function () {
-    return view('pages.search');
-})->name('search');

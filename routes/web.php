@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PartnerController;
@@ -48,14 +49,11 @@ Route::get('/partners', PartnerController::class)->name('partners');
 
 Route::get('/clients', [ClientController::class, 'index'])->name('clients');
 
-Route::get('/contact', function () {
-    return view('pages.contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-Route::post('/contact', function () {
-    // Handle contact form submission here
-    return redirect()->route('contact')->with('success', 'Message sent successfully!');
-})->name('contact.submit');
+Route::post('/contact', [ContactController::class, 'submit'])
+    ->middleware(ProtectAgainstSpam::class)
+    ->name('contact.submit');
 
 // Enquiry form submission (homepage) with honeypot protection
 Route::post('/enquiry', [EnquiryController::class, 'store'])

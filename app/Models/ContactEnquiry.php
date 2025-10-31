@@ -14,6 +14,7 @@ class ContactEnquiry extends Model
         'name',
         'email',
         'phone',
+        'subject',
         'message',
     ];
 }

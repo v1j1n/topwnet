@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Add response compression and optimization for better performance
+        $middleware->web(append: [
+            \App\Http\Middleware\OptimizeResponse::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

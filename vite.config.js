@@ -10,4 +10,34 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    build: {
+        // Enable code splitting for better caching
+        rollupOptions: {
+            output: {
+                manualChunks: (id) => {
+                    if (id.includes('node_modules')) {
+                        return 'vendor';
+                    }
+                },
+            },
+        },
+        // Optimize chunk size
+        chunkSizeWarningLimit: 1000,
+        // Enable minification
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true,
+            },
+        },
+        // Enable CSS code splitting
+        cssCodeSplit: true,
+        // Source maps for production debugging (optional, disable for max performance)
+        sourcemap: false,
+    },
+    // Optimize dependencies
+    optimizeDeps: {
+        include: ['axios'],
+    },
 });

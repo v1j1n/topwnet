@@ -5,15 +5,9 @@
     <meta charset="utf-8">
     <title>@yield('title', config('app.name') . ' | Global Digital Solutions & Connectivity | Kuwait')</title>
 
-    <!-- Stylesheets -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/flatpickr.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick-theme.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
-
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
+    <!-- DNS Prefetch & Preconnect for faster resource loading -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
 
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,6 +22,22 @@
     <meta property="og:title" content="@yield('og_title', 'Top World Networks | Your Global Digital Partner')">
     <meta property="og:description" content="@yield('og_description', 'Connecting brands worldwide with cutting-edge digital solutions, web development, and international SEO strategies.')">
     <meta property="og:type" content="website">
+
+    <!-- Favicon with preload for critical image -->
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
+
+    <!-- Critical CSS - Inline or preload -->
+    <link rel="preload" href="{{ asset('css/bootstrap.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"></noscript>
+
+    <!-- Other Stylesheets with async loading -->
+    <link rel="preload" href="{{ asset('css/style.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('css/style.css') }}"></noscript>
+
+    <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('css/slick.css') }}" media="print" onload="this.media='all'">
 
     @stack('styles')
 </head>
@@ -48,29 +58,31 @@
     </div>
     <!-- End Page Wrapper -->
 
-    <!-- Scripts -->
+    <!-- Critical Scripts - Load synchronously -->
     <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/slick.min.js') }}"></script>
-    <script src="{{ asset('js/slick-animation.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
-    <script src="{{ asset('js/wow.js') }}"></script>
-    <script src="{{ asset('js/appear.js') }}"></script>
-    <script src="{{ asset('js/mixitup.js') }}"></script>
-    <script src="{{ asset('js/flatpickr.js') }}"></script>
-    <script src="{{ asset('js/swiper.min.js') }}"></script>
-    <script src="{{ asset('js/gsap.min.js') }}"></script>
-    <script src="{{ asset('js/ScrollTrigger.min.js') }}"></script>
-    <script src="{{ asset('js/SplitText.min.js') }}"></script>
-    <script src="{{ asset('js/nice-select.min.js') }}"></script>
-    <script src="{{ asset('js/knob.js') }}"></script>
-    <script src="{{ asset('js/parallax.js') }}"></script>
-    <script src="{{ asset('js/vanilla-tilt.js') }}"></script>
-    <script src="{{ asset('js/splitting.js') }}"></script>
-    <script src="{{ asset('js/splitType.js') }}"></script>
-    <script src="{{ asset('js/script-gsap.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
+
+    <!-- Non-critical Scripts - Load with defer for better performance -->
+    <script defer src="{{ asset('js/popper.min.js') }}"></script>
+    <script defer src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script defer src="{{ asset('js/slick.min.js') }}"></script>
+    <script defer src="{{ asset('js/slick-animation.min.js') }}"></script>
+    <script defer src="{{ asset('js/jquery.fancybox.js') }}"></script>
+    <script defer src="{{ asset('js/wow.js') }}"></script>
+    <script defer src="{{ asset('js/appear.js') }}"></script>
+    <script defer src="{{ asset('js/mixitup.js') }}"></script>
+    <script defer src="{{ asset('js/flatpickr.js') }}"></script>
+    <script defer src="{{ asset('js/swiper.min.js') }}"></script>
+    <script defer src="{{ asset('js/gsap.min.js') }}"></script>
+    <script defer src="{{ asset('js/ScrollTrigger.min.js') }}"></script>
+    <script defer src="{{ asset('js/SplitText.min.js') }}"></script>
+    <script defer src="{{ asset('js/nice-select.min.js') }}"></script>
+    <script defer src="{{ asset('js/knob.js') }}"></script>
+    <script defer src="{{ asset('js/parallax.js') }}"></script>
+    <script defer src="{{ asset('js/vanilla-tilt.js') }}"></script>
+    <script defer src="{{ asset('js/splitting.js') }}"></script>
+    <script defer src="{{ asset('js/splitType.js') }}"></script>
+    <script defer src="{{ asset('js/script-gsap.js') }}"></script>
+    <script defer src="{{ asset('js/script.js') }}"></script>
 
     @stack('scripts')
 </body>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PartnerController;
@@ -45,9 +46,7 @@ Route::prefix('services')->name('services.')->group(function () {
 
 Route::get('/partners', PartnerController::class)->name('partners');
 
-Route::get('/clients', function () {
-    return view('pages.clients');
-})->name('clients');
+Route::get('/clients', [ClientController::class, 'index'])->name('clients');
 
 Route::get('/contact', function () {
     return view('pages.contact');

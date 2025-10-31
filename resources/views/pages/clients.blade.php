@@ -6,17 +6,11 @@
 
 @section('content')
     <!-- Start main-content -->
-    <section class="page-title" style="background-image: url({{ asset('images/bg/page-title-bg.jpg') }});">
-        <div class="auto-container">
-            <div class="title-outer">
-                <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('clients') }}#clients">Clients</a></li>
-                </ul>
-                <h1 class="title">Our Clients</h1>
-            </div>
-        </div>
-    </section>
+    <x-page-banner
+        title="Our Clients"
+        :breadcrumbs="['Home' => route('home'), 'Clients' => null]"
+        imageKey="client_banner"
+    />
     <!-- end main-content -->
 
 

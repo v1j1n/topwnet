@@ -93,30 +93,35 @@ class SiteSettingForm
                         FileUpload::make('client_banner')
                             ->label('Client Page Banner')
                             ->image()
+                            ->disk('public')
                             ->directory('banners')
                             ->visibility('public'),
 
                         FileUpload::make('partner_banner')
                             ->label('Partner Page Banner')
                             ->image()
+                            ->disk('public')
                             ->directory('banners')
                             ->visibility('public'),
 
                         FileUpload::make('contact_banner')
                             ->label('Contact Page Banner')
                             ->image()
+                            ->disk('public')
                             ->directory('banners')
                             ->visibility('public'),
 
                         FileUpload::make('aboutus_banner')
                             ->label('About Us Page Banner')
                             ->image()
+                            ->disk('public')
                             ->directory('banners')
                             ->visibility('public'),
 
                         FileUpload::make('services_banner')
                             ->label('Services Page Banner')
                             ->image()
+                            ->disk('public')
                             ->directory('banners')
                             ->visibility('public'),
                     ])

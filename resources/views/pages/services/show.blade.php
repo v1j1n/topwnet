@@ -3,18 +3,11 @@
 @section('description', $service->meta_description ?? $service->description)
 @section('content')
 <!-- Start main-content -->
-<section class="page-title" style="background-image: url({{ asset('images/bg/page-title-bg.jpg') }});">
-    <div class="auto-container">
-        <div class="title-outer">
-            <ul class="page-breadcrumb">
-                <li><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="{{ route('home') }}#services">Services</a></li>
-                <li>{{ $service->title }}</li>
-            </ul>
-            <h1 class="title">{{ $service->title }}</h1>
-        </div>
-    </div>
-</section>
+<x-page-banner
+    :title="$service->title"
+    :breadcrumbs="['Home' => route('home'), 'Services' => route('home') . '#services', $service->title => null]"
+    imageKey="services_banner"
+/>
 <!-- end main-content -->
 
 

@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Share site settings and services data with header and footer partials
-        View::composer(['partials.header', 'partials.footer'], SiteDataComposer::class);
+        // Share site settings and services data with all views
+        View::composer('*', SiteDataComposer::class);
 
         // Register observers
         Service::observe(ServiceObserver::class);

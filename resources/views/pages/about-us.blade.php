@@ -4,17 +4,11 @@
 @section('content')
 
     {{-- Page Title Banner Section with Dynamic Background --}}
-    <section class="page-title" style="background-image: url({{ $siteSetting?->aboutus_banner ? Storage::url($siteSetting->aboutus_banner) : asset('images/bg/page-title-bg.jpg') }});">
-        <div class="auto-container">
-            <div class="title-outer">
-                <ul class="page-breadcrumb">
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li>{{ $aboutUs->title ?? 'About Us' }}</li>
-                </ul>
-                <h1 class="title">{{ $aboutUs->title ?? 'About Us' }}</h1>
-            </div>
-        </div>
-    </section>
+    <x-page-banner
+        :title="$aboutUs->title ?? 'About Us'"
+        :breadcrumbs="['Home' => route('home'), $aboutUs->title ?? 'About Us' => null]"
+        imageKey="aboutus_banner"
+    />
 
     {{-- About Section with Chairman's Message --}}
     <section class="about-section-4 pt-80 pb-80">

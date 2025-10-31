@@ -4,7 +4,9 @@ namespace App\Filament\Resources\SiteSettings\Pages;
 
 use App\Filament\Resources\SiteSettings\SiteSettingResource;
 use App\Models\SiteSetting;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Support\Facades\Cache;
 
 class ManageSiteSettings extends EditRecord
 {
@@ -42,9 +44,16 @@ class ManageSiteSettings extends EditRecord
         return null;
     }
 
-    protected function getSavedNotification(): ?\Filament\Notifications\Notification
+    protected function afterSave(): void
     {
-        return \Filament\Notifications\Notification::make()
+        // Clear the cached site settings and services
+        Cache::forget('site_settings');
+        Cache::forget('active_services');
+    }
+
+    protected function getSavedNotification(): ?Notification
+    {
+        return Notification::make()
             ->success()
             ->title('Settings saved')
             ->body('Site settings have been updated successfully.');

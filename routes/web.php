@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
@@ -9,9 +10,7 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 // Frontend Routes
 Route::get('/', HomeController::class)->name('home');
 
-Route::get('/about-us', function () {
-    return view('pages.about-us');
-})->name('about-us');
+Route::get('/about-us', AboutUsController::class)->name('about-us');
 
 // Services Routes
 Route::prefix('services')->name('services.')->group(function () {

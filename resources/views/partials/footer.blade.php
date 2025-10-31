@@ -70,27 +70,31 @@
                                 <div class="widget-content">
                                     <ul class="user-links">
                                         @if($siteSettings->address)
-                                        <li>
-                                            <i class="fa-light fa-location-dot"></i>
-                                            <a href="#0">{{ $siteSettings->address }}</a>
-                                        </li>
+                                            <li>
+                                                <i class="fa-light fa-location-dot"></i>
+                                                <a href="#0">{{ $siteSettings->address }}</a>
+                                            </li>
                                         @endif
+
                                         @if($siteSettings->emails && count($siteSettings->emails) > 0)
-                                        <li>
-                                            <i class="fa-light fa-envelope"></i>
-                                            @foreach($siteSettings->emails as $email)
-                                            <a href="mailto:{{ $email }}">{{ $email }}</a>@if(!$loop->last)<br />@endif
-                                            @endforeach
-                                        </li>
+                                            <li>
+                                                <i class="fa-light fa-envelope"></i>
+                                                @foreach($siteSettings->emails as $email)
+                                                    <a href="mailto:{{ $email }}">{{ $email }}</a>
+                                                    @if(!$loop->last)<br />@endif
+                                                @endforeach
+                                            </li>
                                         @endif
+
                                         @if($siteSettings->mobile_numbers && count($siteSettings->mobile_numbers) > 0)
-                                        <li>
-                                            <i class="fa-light fa-phone-flip"></i>
-                                            <a href="tel:{{ str_replace(' ', '', $siteSettings->mobile_numbers[0]) }}">
-                                                @foreach($siteSettings->mobile_numbers as $index => $mobile){{ $mobile }}@if($index < count($siteSettings->mobile_numbers) - 1), @endif
-@endforeach
-                                            </a>
-                                        </li>
+                                            <li>
+                                                <i class="fa-light fa-phone-flip"></i>
+                                                <a href="tel:{{ str_replace(' ', '', $siteSettings->mobile_numbers[0]) }}">
+                                                    @foreach($siteSettings->mobile_numbers as $index => $mobile)
+                                                        {{ $mobile }}@if($index < count($siteSettings->mobile_numbers) - 1), @endif
+                                                    @endforeach
+                                                </a>
+                                            </li>
                                         @endif
                                     </ul>
                                 </div>

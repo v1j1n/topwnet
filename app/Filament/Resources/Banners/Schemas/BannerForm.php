@@ -60,12 +60,7 @@ class BannerForm
                             ->imageResizeTargetWidth('1848')
                             ->imageResizeTargetHeight('709')
                             ->dehydrated(fn ($state) => filled($state))
-                            ->rules([
-                                fn (string $operation): string => $operation === 'create'
-                                    ? 'dimensions:width=1848,height=709'
-                                    : 'nullable|dimensions:width=1848,height=709',
-                            ])
-                            ->helperText('Required dimensions: 1848 × 709 pixels. Maximum file size: 1MB.')
+                            ->helperText('Recommended dimensions: 1848 × 709 pixels. Maximum file size: 1MB.')
                             ->columnSpanFull(),
                     ]),
             ]);

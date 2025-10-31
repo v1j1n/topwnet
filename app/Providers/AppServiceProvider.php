@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Banner;
 use App\Models\Service;
+use App\Observers\BannerObserver;
 use App\Observers\ServiceObserver;
 use App\View\Composers\SiteDataComposer;
 use Illuminate\Support\Facades\View;
@@ -27,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', SiteDataComposer::class);
 
         // Register observers
+        Banner::observe(BannerObserver::class);
         Service::observe(ServiceObserver::class);
     }
 }

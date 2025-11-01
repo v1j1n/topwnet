@@ -67,11 +67,19 @@
                             <div class="input-feild">
                                 <select name="service_name" id="subject" required>
                                     <option value="">Service you're looking for?</option>
-                                    @foreach(['IT Consulting', 'Network Security', 'IT Outsourcing', 'Hardware & Software', 'AMC', 'Web Development', 'Domain & Hosting', 'Other'] as $service)
-                                        <option value="{{ $service }}" {{ old('service_name') == $service ? 'selected' : '' }}>
-                                            {{ $service }}
-                                        </option>
-                                    @endforeach
+                                    @if(isset($allServices) && $allServices->count() > 0)
+                                        @foreach($allServices as $service)
+                                            <option value="{{ $service->title }}" {{ old('service_name') == $service->title ? 'selected' : '' }}>
+                                                {{ $service->title }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        @foreach(['IT Consulting', 'Network Security', 'IT Outsourcing', 'Hardware & Software', 'AMC', 'Web Development', 'Domain & Hosting', 'Other'] as $service)
+                                            <option value="{{ $service }}" {{ old('service_name') == $service ? 'selected' : '' }}>
+                                                {{ $service }}
+                                            </option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>

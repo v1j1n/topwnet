@@ -135,8 +135,8 @@
 
                                 <select class="mt-4" name="service_name" id="service_name" required>
                                     <option value="">Service you're looking for?</option>
-                                    @if(isset($services) && $services->count() > 0)
-                                        @foreach($services as $service)
+                                    @if(isset($allServices) && $allServices->count() > 0)
+                                        @foreach($allServices as $service)
                                             <option value="{{ $service->title }}" {{ old('service_name') == $service->title ? 'selected' : '' }}>
                                                 {{ $service->title }}
                                             </option>

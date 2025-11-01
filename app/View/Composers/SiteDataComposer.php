@@ -21,7 +21,7 @@ class SiteDataComposer
 
         // Cache active services ordered by sort_order, limit to first 6 for footer
         $services = Cache::remember('active_services', 3600, function () {
-            return Service::where('status', 'active')
+            return Service::where('status', 'Active')
                 ->orderBy('sort_order')
                 ->get(['id', 'title', 'slug']);
         });

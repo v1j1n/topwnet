@@ -52,7 +52,7 @@
                                     </div>
                                     <div>
                                         <img src="{{ asset('images/sign.png') }}" alt="Signature">
-                                        <p class="sub-title">{{ $aboutUs->chairman_name ?? 'Chairman' }}{{ $aboutUs?->designation && !str_contains($aboutUs->chairman_name ?? '', $aboutUs->designation) ? ' - ' . $aboutUs->designation : '' }}</p>
+                                        <p class="sub-title">{{ $aboutUs?->designation && !str_contains($aboutUs->chairman_name ?? '', $aboutUs->designation) ?  $aboutUs->designation : '' }}</p>
                                     </div>
                                 </div>
                                 @endif

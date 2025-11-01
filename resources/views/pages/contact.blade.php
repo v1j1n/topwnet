@@ -44,8 +44,8 @@
                         <h4 class="title">Contact</h4>
                         <p class="text">
                             @if($siteSettings && $siteSettings->mobile_numbers)
-                                @foreach($siteSettings->mobile_numbers as $phone)
-                                    {{ $phone }}@if(!$loop->last)<br>@endif
+                                @foreach($siteSettings->mobile_numbers as $index => $phone)
+                                    {{ $phone }}@if($index % 2 === 0 && !$loop->last) / @elseif($index % 2 === 1 && !$loop->last)<br>@endif
                                 @endforeach
                             @else
                                 +965 22445419 / 22445391<br>

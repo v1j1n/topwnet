@@ -49,7 +49,7 @@
                             </div>
                         @endif
 
-                        <a class="btn-one-rounded wow fadeInDown mt-40 animated" data-wow-delay="200ms" data-wow-duration="1500ms" href="{{ route('services.it-consulting') }}">
+                        <a class="btn-one-rounded wow fadeInDown mt-40 animated" data-wow-delay="200ms" data-wow-duration="1500ms" href="{{ route('services.show', 'it-consulting') }}">
                             View all Services <i class="fa-regular fa-angle-right"></i>
                         </a>
                     </div>
